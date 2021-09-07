@@ -1,17 +1,22 @@
-# Azure Kinect Body Tracking OfflineProcessor Sample
+# Azure Kinect MKV Extractor
 
 ## Introduction
 
-The Azure Kinect Body Tracking OfflineProcessor sample demonstrates how to playback a recording Azure Kinect MKV file,
-run through the body tracking SDK and store the body tracking results in a json file.
+This tool is able to extract various data sources from a single MKV file that was recorded with the Azure Kinect MKV Recorder tool. 
 
-Notice: the current implementation is not the most efficient way to process a recording file offline. It simply
-synchronously pushes and pops the capture to/from the tracker queue. To achieve the best performance, you would need to
-create separate reader thread and process thread. And keep pushing new frames to the tracker without waiting for the
-k4abt_pop_result to return successfully.
+https://docs.microsoft.com/de-de/azure/kinect-dk/azure-kinect-recorder
+
+Currently, it is able to extract the following data:
+
+* 3D Joint Coordinates and Orientations
+* 2D Joint Coordinates
+* Individual RGB images, named with the current timestamps
+* 3D Colored Pointclouds as ply format (takes longer to process)
 
 ## Usage Info
 
+The extraction tool acceppts the following arguments. After the input file, the order does not matter. 
+
 ```
-offline_processor.exe <input_mkv_file> <output_json_file>
+offline_processor.exe <input_mkv_file> [<--gpu>, <--skeleton>, <--rgb>, <--pointcloud>]
 ```
