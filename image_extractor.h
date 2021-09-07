@@ -12,6 +12,10 @@ public:
 	ImageExtractor(string dstPath);
 	void extractData(k4a_capture_t captureHandle);
 
+	void printNrValidFrames() {
+		cout << "Image Extractor: " << _nrFrames << endl;
+	}
+
 private:
 	k4a_image_t depthImage = nullptr;
 	k4a_image_t colorImage = nullptr;

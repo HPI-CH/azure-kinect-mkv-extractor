@@ -84,6 +84,7 @@ void PointcloudExtractor::extractData(k4a_capture_t captureHandle)
 
 	uint64_t timestamp = k4a_image_get_device_timestamp_usec(colorImage);
 	write_point_cloud(points, _dstPath + to_string(timestamp) + ".ply");
+	_nrFrames += 1;
 }
 
 void PointcloudExtractor::write_point_cloud(vector<color_point_t> points, string file_name)

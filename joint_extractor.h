@@ -17,6 +17,10 @@ public:
 	JointExtractor(string dstPath, k4a_calibration_t calibration, bool useGPU);
 	void extractData(k4a_capture_t captureHandle);
 
+	void printNrValidFrames() {
+		cout << "Joint Extractor: " << _nrFrames << endl;
+	}
+
 private:
 	void addErrorLine(uint64_t timestamp);
 	string createHeader(vector<char> axes, char d);

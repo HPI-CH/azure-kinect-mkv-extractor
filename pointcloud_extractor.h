@@ -23,6 +23,10 @@ public:
 	void extractData(k4a_capture_t captureHandle);
     static void write_point_cloud(vector<color_point_t> points, string file_name);
 
+    void printNrValidFrames() {
+        cout << "Pointcloud Extractor: " << _nrFrames << endl;
+    }
+
 private:
 	k4a_transformation_t mTransformationHandle = nullptr;
 	k4a_image_t pointcloudImage = nullptr;

@@ -68,9 +68,11 @@ bool processMkvOffline(string input_path, string output_path)
 		frame_count += 1;
 	}
 
-	cout << "Total read " << frame_count << " frames" << endl;
-	cout << "Results saved in " << output_path;
-
+	cout << "Results saved in " << output_path << endl;
+	for (DataExtractorBase* value : extractors) {
+		value->printNrValidFrames();
+	}
+	
 	k4a_playback_close(playback_handle);
 	return true;
 }

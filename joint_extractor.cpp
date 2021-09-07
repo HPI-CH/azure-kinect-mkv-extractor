@@ -2,15 +2,11 @@
 
 #include <chrono>
 #include <iostream>
-#include <fstream>
-#include <string>
 #include <time.h>
 #include <filesystem>
 
 #include <BodyTrackingHelpers.h>
 #include <Utilities.h>
-
-using namespace std;
 
 
 JointExtractor::JointExtractor(string dstPath, k4a_calibration_t calibration, bool useGPU) : DataExtractorBase(dstPath + "\\skeleton\\") {
@@ -142,6 +138,7 @@ void JointExtractor::extractData(k4a_capture_t captureHandle)
 		_file_stream.close();
 	}
 
+	_nrFrames += 1;
 	k4abt_frame_release(body_frame);
 	return;
 }
